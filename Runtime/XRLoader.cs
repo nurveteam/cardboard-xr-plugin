@@ -40,8 +40,6 @@ namespace Google.XR.Cardboard
 
         private static Texture2D _closeTexture;
 
-        private static Texture2D _gearTexture;
-
         private static Texture2D _whiteLineTexture;
 
         /// <summary>
@@ -157,17 +155,13 @@ namespace Google.XR.Cardboard
                     (int)renderingArea.y, (int)renderingArea.width, (int)renderingArea.height);
 
             RectInt closeRect = Widget.CloseButtonRenderRect;
-            RectInt gearRect = Widget.GearButtonRenderRect;
             RectInt alignmentRect = Widget.AlignmentRect;
-            CardboardUnity_setWidgetCount(3);
+            CardboardUnity_setWidgetCount(2);
             CardboardUnity_setWidgetParams(
                     0, _closeTexture.GetNativeTexturePtr(), closeRect.x, closeRect.y,
                     closeRect.width, closeRect.height);
             CardboardUnity_setWidgetParams(
-                    1, _gearTexture.GetNativeTexturePtr(), gearRect.x, gearRect.y, gearRect.width,
-                    gearRect.height);
-            CardboardUnity_setWidgetParams(
-                    2, _whiteLineTexture.GetNativeTexturePtr(), alignmentRect.x,
+                    1, _whiteLineTexture.GetNativeTexturePtr(), alignmentRect.x,
                     alignmentRect.y, alignmentRect.width, alignmentRect.height);
         }
 
@@ -282,8 +276,6 @@ namespace Google.XR.Cardboard
 
             _closeTexture = Resources.Load<Texture2D>("Cardboard/quantum_ic_close_white_24");
             DontDestroyOnLoad(_closeTexture);
-            _gearTexture = Resources.Load<Texture2D>("Cardboard/quantum_ic_settings_white_24");
-            DontDestroyOnLoad(_gearTexture);
             _whiteLineTexture = Resources.Load<Texture2D>("Cardboard/quantum_ic_line_white_24");
             DontDestroyOnLoad(_whiteLineTexture);
 
@@ -301,7 +293,6 @@ namespace Google.XR.Cardboard
         private void CardboardSDKDeinitialize()
         {
             Resources.UnloadAsset(_closeTexture);
-            Resources.UnloadAsset(_gearTexture);
             Resources.UnloadAsset(_whiteLineTexture);
         }
     }
